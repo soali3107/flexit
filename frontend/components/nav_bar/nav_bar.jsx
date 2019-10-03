@@ -2,9 +2,15 @@
 // import { Link } from 'react-router-dom';
 
 // export default ({ currentUser, logout }) => {
-//     const display = (
+//     const display = currentUser ? (
 //         <div>
-//             <Link className="btn" to="/signup"></Link>
+//             <p>Hello, {currentUser.name}</p>
+//             <button onClick={logout}>Log Out</button>
+//         </div>
+//         ) : (
+//         <div>
+//             <Link className="btn" to="/signup">Sign Up</Link>
+//             <Link classname="btn" to="/login">Log In</Link>
 //         </div>
 //     );
 
@@ -16,4 +22,7 @@
 //             </div>
 //         </header>
 //     )
-// }
+// };
+
+// Went to app > view> layouts >  application.html.erb to add  script. Current user is  defined in  application  controlle.r
+// Then go to entry  file (flexit.jsx)
