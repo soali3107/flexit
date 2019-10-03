@@ -6,7 +6,7 @@ import { Route } from 'react-router-dom';
 export default () => (
     <div>
         {/* same session form. login container.  login in root route. */}
-        <Route path="/" component={} />
+        {/* <Route path="/" component={} /> */}
         <Route path="/signup" component={SignupContainer} />
     </div>
 );
