@@ -1,0 +1,24 @@
+.navbar{
+    color: white;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    background-color: black;
+    text-align: center;
+}
+.navbar-logo{
+    background-image: image-url('flexit.png');
+    width: 90px;
+    height: 30px;
+    background-size: cover;
+}
+
+.navbar-navigation{
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar-button{
+    display: flex;
+    flex-direction: right;
+}

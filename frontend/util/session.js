@@ -11,7 +11,7 @@ export const postSession = user => (
     $.ajax({
         url: 'api/session',
         method: 'POST',
-        data: { session }
+        data: { user }
     })
 );
 //Log a user out
@@ -22,3 +22,11 @@ export const deleteSession = () => (
     })
 );
 
+export const demoUser = {
+    email: "demo@gmail.com",
+    password: "demoLogin"
+};
+
+export const postDemo = () => {
+    return postSession(demoUser)
+};

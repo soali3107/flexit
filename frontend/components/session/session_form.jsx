@@ -1,5 +1,5 @@
 import React  from 'react';
-
+import {  Link }  from 'react-router-dom';
 class SessionForm extends React.Component {
 
     //state is pojo.
@@ -11,7 +11,9 @@ class SessionForm extends React.Component {
             email: '',
             password: ''
         };
+        // this.handleInput = this.handleInput.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.loginDemo = this.loginDemo.bind(this)
     }
 
     //handleinput takes  care of username, email,  password. 
@@ -26,46 +28,82 @@ class SessionForm extends React.Component {
     //Prevent default action because it causes a POST action which rerenders.
     handleSubmit(e){
         e.preventDefault();
-        this.props.createNewUser(this.state)
+        this.props.createSession(this.state)
         .then(() => this.props.history.push('/browse'))
     };
 
+    loginDemo(e){
+        e.preventDefault();
+        this.props.demoLogin({email: "demo@gmail.com", password: "demoLogin"})
+            .then(() =>  this.props.history.push('/browse'));
+        // this.setState(demoUser);
+        // this.handleInput(e);
+    }
+
+    renderErrors() {
+        return (
+            <div className="errors"> 
+                {this.props.errors.map((error, i) => (
+                    <div key={`error-${i}`} className="errors-type">
+                        {error}
+                    </div>
+                ))}
+            </div>
+        );
+    };
+//   Have an account? Sign In now.   
+//Don't have an account? Sign up now.
     render(){
         let current = this.props.formType;
-        let next = (this.props.formType === '#/login' ? '#/signup' : '#/login');
-        return (
-            <body className="session">
-                <div className="session-inside">
-                    {/* <img src="netflix.jpg" alt="Picture of many shows." /> */}
-                    <h2>{current}</h2>
-                    <form  className="session-form">
-                        <label className='session-form-email'>Email:
-                            <input 
-                                type="text" 
-                                value={this.state.email}
-                                onChange={this.handleInput('email')}/>
-                        </label>
-                        {/* <label>Email:
-                            <input
-                            type="text"
-                            value={this.state.email}
-                            onChanged={this.handleInput('email')} />
-                        </label> */}
-                        <label className='session-form-password'>Password:
-                            <input
-                                type="password"
-                                value={this.state.password}
-                                onChange={this.handleInput('password')} />
-                        </label>
-                        <button className='session-form-button' onClick={this.handleSubmit}>{this.props.formType}</button>
-                    </form>
-                    <footer className='session-footer'>
-                        <a href={next}>
-                            {next}
-                        </a>
-                    </footer>
+        let bool = this.props.formType === 'Sign In';
+        let next = (bool ? 'Sign Up' : 'Sign In');
+        let link = bool ? 
+            <div>
+                <div className="words">
+                    Don't have an account? 
+                </div> 
+                <Link to="/signup" className="bottom-link" >{next} now.</Link>
+            </div>
+            : 
+            <div>
+                <div className="words">
+                    Have an account? 
                 </div>
-            </body>
+                <Link to="/login" className="bottom-link">{next} now.</Link>
+            </div>
+        // debugger
+        return (
+            <div className="every">
+                {/* <a href="https://fontmeme.com"/netflix-font/" className="flexit"><img src="https://fontmeme.com/permalink/191007/329e783164a2040cefb26375f300907e.png" alt="netflix-font" border="0" /></a> */}
+                {/* <img className="flexit" src="flexit.jpg" alt="FLEXIT"/> */}
+            <div className="session">
+                {/* <div className="session-inside"> */}
+                    {/* <img src="netflix.jpg" alt="Picture of many shows." /> */}
+                <form className="session-form" onSubmit={this.handleSubmit}>
+                        <h1 className="title">{current}</h1>
+                        {this.renderErrors()}
+                        <input 
+                            placeholder='Email'
+                            className="session-form-input"
+                            type="text" 
+                            value={this.state.email}
+                            onChange={this.handleInput('email')}/>
+                        {/* <label className='session-form-password'>  </label> */}
+                        <input
+                            placeholder='Password'
+                            className="session-form-input"
+                            type="password"
+                            value={this.state.password}
+                            onChange={this.handleInput('password')} />
+                        <div className="session-form-input-errors">
+                            {/* {if(this.renderErrors() && this.state.password.length() < 6) ("Password  needs to be at least 6 charachters")} */}
+                        </div>
+                        <input className='session-form-button' type="submit" value={this.props.formType} />
+                         <button className='session-form-button' onClick={this.loginDemo}>Demo</button>   
+                        <div className='link'>{link}</div>
+                    </form>
+                </div>
+            </div>
         )
     }
 };

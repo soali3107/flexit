@@ -16,12 +16,14 @@ class User < ApplicationRecord
     validates :email, :session_token, uniqueness: true
     validates :password, length: {minimum: 6, allow_nil: true}
     
-    after_initialize :ensure_session_token
+    after_initialize :ensure_session_token 
     attr_reader :password
-
+    
+    #Can call it anything we want.  
+    # has_one_attached :photo 
     def self.find_by_credentials(email, password)
-        email = User.find_by(email: password)
-        (email && email.is_password?(password)) ? email : nil
+        user = User.find_by(email: email)
+        (user && user.is_password?(password)) ? user : nil
     end
 
     def is_password?(password)

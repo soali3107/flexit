@@ -1,5 +1,6 @@
 class Api::SessionsController < ApplicationController
     def create
+        # debugger
         @user = User.find_by_credentials(params[:user][:email], params[:user][:password])
         if @user.nil?
             render json: ['Email and Password incorrect.'], status: 422
@@ -10,7 +11,7 @@ class Api::SessionsController < ApplicationController
     end
 
     def  destroy
-        logout!
+        logout
         render json: { message: 'Logout successful.' }
     end
 

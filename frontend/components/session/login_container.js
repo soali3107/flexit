@@ -3,11 +3,13 @@ import { login } from '../../actions/session';
 import SessionForm from './session_form';
 
 const mapStateToProps = state => ({
-    formType: "#/login",
+    formType: "Sign In",
+    errors: state.errors.session,
 });
 
 const mapDispatchToProps = dispatch => ({
-    login: formUser => dispatch(login(formUser))
+    createSession: formUser => dispatch(login(formUser)),
+    demoLogin: demoUser => dispatch(login(demoUser))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SessionForm);
