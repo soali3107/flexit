@@ -62,14 +62,14 @@ class SessionForm extends React.Component {
                 <div className="words">
                     Don't have an account? 
                 </div> 
-                <Link to="/signup" className="bottom-link" >{next} now.</Link>
+                <Link to="/signup" className="bottom-link" > Sign up now.</Link>
             </div>
             : 
             <div>
                 <div className="words">
                     Have an account? 
                 </div>
-                <Link to="/login" className="bottom-link">{next} now.</Link>
+                <Link to="/login" className="bottom-link">Sign in now.</Link>
             </div>
         // debugger
         return (

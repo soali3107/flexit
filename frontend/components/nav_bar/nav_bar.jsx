@@ -7,14 +7,18 @@ class NavBar extends React.Component {
     }
     render (){
         return (
-            <div className="navbar">
-                <div className="navbar-logo">      </div>
-                <ul className="navbar-navigation">
-                    <li className="navbar-navigation-home">Home</li>
-                    <li className="navbar-navigation-home">My List</li>
-                </ul>
-                <button className='navbar-button' onClick={this.props.logout}>Logout</button>
 
+            <div className="navbar">
+                <div className="navbar-left">
+                    <Link className="navbar-logo" to="/">   </Link>
+                    <div className="navbar-navigation">
+                        <Link classname="navbar-navigation-home" to="/browse">Home</Link>
+                        <div className="navbar-navigation-home">My List</div>
+                    </div>
+                </div>
+                <div className="navbar-right">
+                    <button className='navbar-button' onClick={this.props.logout}>Logout</button>
+                </div>
             </div>
         )
     }

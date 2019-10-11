@@ -1,24 +1,70 @@
+// .nav{
+//     display: flex;
+//     background-color: black;
+//     height: 50px;
+//     color: white;
+//     float: right;
+// }
 .navbar{
-    color: white;
-    height: 50px;
     display: flex;
     flex-direction: row;
-    background-color: black;
     text-align: center;
+    display: flex;
+    background-color: black;
+    height: 50px;
+    width: 100%;
+    color: white;
+    justify-content: space-between;
+    align-items: center;
+    // padding-left: 50px;
+    // padding-right: 50px;
+    // background: transparent;
+}
+.navbar-left{
+    display: flex;
+    flex-direction: row;
+    padding-left: 50px;
+    align-items: center;
+    // float: left;
+}
+.navbar-right{
+    // display: flex;
+    // flex-direction: row;
+    // justify-content: flex;
+    padding-right: 50px;
+    color: white;
 }
 .navbar-logo{
     background-image: image-url('flexit.png');
     width: 90px;
     height: 30px;
     background-size: cover;
+    margin-right: 50px;
 }
-
 .navbar-navigation{
     display: flex;
     flex-direction: row;
+    padding-top: 30px;
+
+}
+
+.navbar-navigation-home{
+    display: flex;
+    flex-direction: row;
+    // vertical-align: middle;
+    text-align: center;
+    padding-left:  50px;
 }
 
 .navbar-button{
     display: flex;
-    flex-direction: right;
+    // margin-top: 20px;
+    font-size: 16px;
+    margin: 8px 0px  12px;
+    padding: 8px;
+
+    // flex-direction: right;
+    background-color: #E50914;
+    border-radius: 4px;
+    height: 20px;
 }

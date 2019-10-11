@@ -15,7 +15,9 @@ class  BrowseForm extends React.Component {
         this.props.fetchVideos();
     }
     render (){
-        const firstVideo  =  this.props.videos[0] || {};
+        const firstVideo = this.props.videos.slice(0, 1).map(video => {
+            return <BrowseTop key={video.id} video={video} />
+        });
         // debugger
         const videos = this.props.videos.slice(1).map(video =>  {
             return <VideoIndexItem key={video.id} video={video} />
@@ -23,7 +25,9 @@ class  BrowseForm extends React.Component {
         // debugger
         return (
             <div  className="browse">
-                <BrowseTop video={firstVideo}/>
+                <div className='browse-first'>
+                    {firstVideo}
+                </div>
                 <ul className="browse-bottom">
                     {videos}
                 </ul>
